@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16 - Functions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .demo-box {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #764ba2; }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="15-js-operators.html">← Previous</a>
+            <a href="17-js-dom.html">Next →</a>
+        </nav>
+        
+        <h1>⚙️ Lesson 16: Functions</h1>
+        
+        <div class="demo-box">
+            <strong>Functions</strong> are reusable blocks of code that perform a specific task. They help you avoid repeating code and make your programs more organized.
+        </div>
+        
+        <h2>Defining Functions</h2>
+        
+        <h3>Function Declaration</h3>
+        <p>Traditional way to define functions:</p>
+        
+        <div class="code-block">
+function greet(name) {
+    console.log("Hello, " + name);
+}
+
+greet("Alice");     // Output: Hello, Alice
+greet("Bob");       // Output: Hello, Bob
+        </div>
+        
+        <h3>Function Expression</h3>
+        <p>Assign a function to a variable:</p>
+        
+        <div class="code-block">
+const add = function(a, b) {
+    return a + b;
+};
+
+console.log(add(5, 3));  // 8
+        </div>
+        
+        <h3>Arrow Function (Modern)</h3>
+        <p>Concise syntax using arrow (=&gt;):</p>
+        
+        <div class="code-block">
+const multiply = (a, b) => {
+    return a * b;
+};
+
+const square = (x) => x * x;  // Implicit return
+
+console.log(multiply(4, 5));  // 20
+console.log(square(5));       // 25
+        </div>
+        
+        <h2>Parameters and Arguments</h2>
+        <p>Parameters are variables defined in the function. Arguments are values passed to the function.</p>
+        
+        <div class="code-block">
+// Parameters: name, age
+function introduce(name, age) {
+    console.log(`I am ${name} and I am ${age} years old`);
+}
+
+// Arguments: "Alice", 28
+introduce("Alice", 28);
+        </div>
+        
+        <h2>Return Values</h2>
+        <p>Functions can return values using the <code>return</code> keyword:</p>
+        
+        <div class="code-block">
+function calculateTotal(price, quantity) {
+    return price * quantity;
+}
+
+let total = calculateTotal(10, 5);  // 50
+console.log(total);
+        </div>
+        
+        <h3>Multiple Returns</h3>
+        <p>Return different values based on conditions:</p>
+        
+        <div class="code-block">
+function checkAge(age) {
+    if (age >= 18) {
+        return "Adult";
+    } else {
+        return "Minor";
+    }
+}
+
+console.log(checkAge(25));  // "Adult"
+console.log(checkAge(15));  // "Minor"
+        </div>
+        
+        <h2>Default Parameters</h2>
+        <p>Set default values for parameters:</p>
+        
+        <div class="code-block">
+function greet(name = "Guest") {
+    console.log("Hello, " + name);
+}
+
+greet();            // Hello, Guest
+greet("Alice");     // Hello, Alice
+        </div>
+        
+        <h2>Rest Parameters</h2>
+        <p>Accept any number of arguments using ...:</p>
+        
+        <div class="code-block">
+function sum(...numbers) {
+    let total = 0;
+    for (let num of numbers) {
+        total += num;
+    }
+    return total;
+}
+
+console.log(sum(1, 2, 3));           // 6
+console.log(sum(1, 2, 3, 4, 5));     // 15
+        </div>
+        
+        <h2>Scope</h2>
+        <p>Where variables are accessible:</p>
+        
+        <h3>Global Scope</h3>
+        <div class="code-block">
+let globalVar = "I'm global";
+
+function myFunction() {
+    console.log(globalVar);  // Can access
+}
+        </div>
+        
+        <h3>Local/Function Scope</h3>
+        <div class="code-block">
+function myFunction() {
+    let localVar = "I'm local";
+    console.log(localVar);   // Can access
+}
+
+console.log(localVar);       // ERROR - not accessible
+        </div>
+        
+        <h3>Block Scope (let/const)</h3>
+        <div class="code-block">
+if (true) {
+    let blockVar = "Block scope";
+    const blockConst = "Also block";
+}
+
+console.log(blockVar);       // ERROR - not accessible
+        </div>
+        
+        <h2>Practical Examples</h2>
+        
+        <h3>Calculator Function</h3>
+        <div class="code-block">
+function calculate(a, b, operation) {
+    if (operation === "+") {
+        return a + b;
+    } else if (operation === "-") {
+        return a - b;
+    } else if (operation === "*") {
+        return a * b;
+    } else if (operation === "/") {
+        return a / b;
+    }
+}
+
+console.log(calculate(10, 5, "+"));  // 15
+console.log(calculate(10, 5, "*"));  // 50
+        </div>
+        
+        <h3>Check Password Strength</h3>
+        <div class="code-block">
+function checkPasswordStrength(password) {
+    if (password.length < 6) {
+        return "Weak";
+    } else if (password.length < 10) {
+        return "Medium";
+    } else {
+        return "Strong";
+    }
+}
+
+console.log(checkPasswordStrength("123"));       // Weak
+console.log(checkPasswordStrength("password"));  // Medium
+console.log(checkPasswordStrength("MyStr0ng!Pwd")); // Strong
+        </div>
+        
+        <h2>Function Hoisting</h3>
+        <p>Function declarations are hoisted (moved to top), but function expressions are not:</p>
+        
+        <div class="code-block">
+// OK - declaration is hoisted
+myFunction();
+
+function myFunction() {
+    console.log("Hello");
+}
+
+// ERROR - expression is not hoisted
+myExpression();
+
+const myExpression = function() {
+    console.log("Hello");
+};
+        </div>
+        
+        <h2>Callback Functions</h2>
+        <p>Pass functions as arguments to other functions:</p>
+        
+        <div class="code-block">
+function greetWith(greeting, name, callback) {
+    let message = greeting + ", " + name;
+    callback(message);
+}
+
+function logMessage(msg) {
+    console.log(msg);
+}
+
+greetWith("Hello", "Alice", logMessage);  // Hello, Alice
+        </div>
+        
+        <h2>Interactive Example</h2>
+        
+        <div class="demo-box">
+            <input type="number" id="num1" placeholder="First number" style="padding: 8px; margin: 5px;">
+            <input type="number" id="num2" placeholder="Second number" style="padding: 8px; margin: 5px;">
+            <button onclick="performCalculation('+')">Add</button>
+            <button onclick="performCalculation('-')">Subtract</button>
+            <button onclick="performCalculation('*')">Multiply</button>
+            <button onclick="performCalculation('/')">Divide</button>
+            <p id="result"></p>
+        </div>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>Functions are reusable blocks of code</li>
+            <li>Use <code>return</code> to return values</li>
+            <li>Parameters allow functions to accept data</li>
+            <li>Use arrow functions for concise syntax</li>
+            <li>Variables have local and global scope</li>
+            <li>Functions can take other functions as arguments</li>
+        </ul>
+        
+        <script>
+            function calculate(a, b, op) {
+                switch(op) {
+                    case '+': return a + b;
+                    case '-': return a - b;
+                    case '*': return a * b;
+                    case '/': return b !== 0 ? a / b : "Error: Division by zero";
+                    default: return "Invalid operation";
+                }
+            }
+            
+            function performCalculation(operation) {
+                let num1 = parseFloat(document.getElementById('num1').value);
+                let num2 = parseFloat(document.getElementById('num2').value);
+                
+                if (isNaN(num1) || isNaN(num2)) {
+                    document.getElementById('result').innerHTML = "Please enter valid numbers";
+                    return;
+                }
+                
+                let result = calculate(num1, num2, operation);
+                document.getElementById('result').innerHTML = `${num1} ${operation} ${num2} = ${result}`;
+            }
+        </script>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="15-js-operators.html">← Previous</a> | 
+            <a href="17-js-dom.html">Next: DOM Manipulation →</a>
+        </div>
+    </div>
+</body>
+</html>

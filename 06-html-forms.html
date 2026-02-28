@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 - Forms & Inputs</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .demo-box {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        input, textarea, select, button {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+        button {
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="05-html-lists.html">← Previous</a>
+            <a href="07-css-introduction.html">Next →</a>
+        </nav>
+        
+        <h1>📄 Lesson 6: Forms & Inputs</h1>
+        
+        <h2>Introduction to Forms</h2>
+        <p>Forms allow users to input and submit data to a server. Use the &lt;form&gt; tag to create a form, and various input elements for different types of data.</p>
+        
+        <h2>Basic Form Structure</h2>
+        
+        <div class="code-block">
+&lt;form action="/submit" method="POST"&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name"&gt;
+    
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+        </div>
+        
+        <h2>Form Attributes</h2>
+        <ul>
+            <li><strong>action:</strong> URL where the form data is sent</li>
+            <li><strong>method:</strong> HTTP method - GET or POST</li>
+            <li><strong>enctype:</strong> How data is encoded (important for file uploads)</li>
+            <li><strong>target:</strong> Where to open the response (_blank, _self, etc.)</li>
+        </ul>
+        
+        <h2>Input Types</h2>
+        
+        <h3>Text Inputs</h3>
+        
+        <div class="code-block">
+&lt;!-- Single-line text input --&gt;
+&lt;input type="text" placeholder="Enter your name"&gt;
+
+&lt;!-- Password input (hidden characters) --&gt;
+&lt;input type="password" placeholder="Enter password"&gt;
+
+&lt;!-- Multi-line text area --&gt;
+&lt;textarea rows="5" cols="40"&gt;&lt;/textarea&gt;
+
+&lt;!-- Email input with validation --&gt;
+&lt;input type="email" placeholder="your@email.com"&gt;
+
+&lt;!-- URL input --&gt;
+&lt;input type="url" placeholder="https://example.com"&gt;
+
+&lt;!-- Number input --&gt;
+&lt;input type="number" min="1" max="100"&gt;
+
+&lt;!-- Search input --&gt;
+&lt;input type="search" placeholder="Search..."&gt;
+        </div>
+        
+        <div class="demo-box">
+            <div class="form-group">
+                <label>Text Input:</label>
+                <input type="text" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label>Email Input:</label>
+                <input type="email" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label>Number Input:</label>
+                <input type="number" min="1" max="100" value="50">
+            </div>
+            <div class="form-group">
+                <label>Message:</label>
+                <textarea rows="3" placeholder="Type your message..."></textarea>
+            </div>
+        </div>
+        
+        <h2>Selection Inputs</h2>
+        
+        <h3>Checkboxes</h3>
+        
+        <div class="code-block">
+&lt;label&gt;
+    &lt;input type="checkbox" name="agree"&gt;
+    I agree to the terms
+&lt;/label&gt;
+
+&lt;label&gt;
+    &lt;input type="checkbox" name="interests" value="sports"&gt;
+    Sports
+&lt;/label&gt;
+&lt;label&gt;
+    &lt;input type="checkbox" name="interests" value="music"&gt;
+    Music
+&lt;/label&gt;
+        </div>
+        
+        <div class="demo-box">
+            <label>
+                <input type="checkbox"> I agree to the terms
+            </label><br><br>
+            <label>
+                <input type="checkbox"> Sports
+            </label><br>
+            <label>
+                <input type="checkbox"> Music
+            </label>
+        </div>
+        
+        <h3>Radio Buttons</h3>
+        
+        <div class="code-block">
+&lt;label&gt;
+    &lt;input type="radio" name="color" value="red"&gt;
+    Red
+&lt;/label&gt;
+&lt;label&gt;
+    &lt;input type="radio" name="color" value="blue"&gt;
+    Blue
+&lt;/label&gt;
+&lt;label&gt;
+    &lt;input type="radio" name="color" value="green"&gt;
+    Green
+&lt;/label&gt;
+        </div>
+        
+        <div class="demo-box">
+            <label>
+                <input type="radio" name="color"> Red
+            </label><br>
+            <label>
+                <input type="radio" name="color"> Blue
+            </label><br>
+            <label>
+                <input type="radio" name="color"> Green
+            </label>
+        </div>
+        
+        <h3>Drop-down Menus (Select)</h3>
+        
+        <div class="code-block">
+&lt;label for="country"&gt;Country:&lt;/label&gt;
+&lt;select id="country" name="country"&gt;
+    &lt;option value=""&gt;Select a country&lt;/option&gt;
+    &lt;option value="usa"&gt;United States&lt;/option&gt;
+    &lt;option value="canada"&gt;Canada&lt;/option&gt;
+    &lt;option value="mexico"&gt;Mexico&lt;/option&gt;
+&lt;/select&gt;
+        </div>
+        
+        <div class="demo-box">
+            <label for="country">Country:</label>
+            <select id="country">
+                <option value="">Select a country</option>
+                <option value="usa">United States</option>
+                <option value="canada">Canada</option>
+                <option value="mexico">Mexico</option>
+            </select>
+        </div>
+        
+        <h2>Date & Time Inputs</h2>
+        
+        <div class="code-block">
+&lt;!-- Date picker --&gt;
+&lt;input type="date"&gt;
+
+&lt;!-- Time picker --&gt;
+&lt;input type="time"&gt;
+
+&lt;!-- Date and time --&gt;
+&lt;input type="datetime-local"&gt;
+
+&lt;!-- Month picker --&gt;
+&lt;input type="month"&gt;
+
+&lt;!-- Week picker --&gt;
+&lt;input type="week"&gt;
+        </div>
+        
+        <div class="demo-box">
+            <div class="form-group">
+                <label>Date:</label>
+                <input type="date">
+            </div>
+            <div class="form-group">
+                <label>Time:</label>
+                <input type="time">
+            </div>
+        </div>
+        
+        <h2>Other Inputs</h2>
+        
+        <div class="code-block">
+&lt;!-- Color picker --&gt;
+&lt;input type="color" value="#667eea"&gt;
+
+&lt;!-- Range slider --&gt;
+&lt;input type="range" min="0" max="100" value="50"&gt;
+
+&lt;!-- File upload --&gt;
+&lt;input type="file" accept="image/*"&gt;
+
+&lt;!-- Hidden input (not visible) --&gt;
+&lt;input type="hidden" name="user_id" value="123"&gt;
+        </div>
+        
+        <div class="demo-box">
+            <div class="form-group">
+                <label>Color:</label>
+                <input type="color" value="#667eea">
+            </div>
+            <div class="form-group">
+                <label>Volume (0-100):</label>
+                <input type="range" min="0" max="100" value="50" style="width: 100%;">
+            </div>
+        </div>
+        
+        <h2>Input Attributes</h2>
+        <ul>
+            <li><strong>name:</strong> Name of the input (sent with form data)</li>
+            <li><strong>id:</strong> Unique identifier (use with labels)</li>
+            <li><strong>value:</strong> Default or current value</li>
+            <li><strong>placeholder:</strong> Helper text in the input</li>
+            <li><strong>required:</strong> Field must be filled before submit</li>
+            <li><strong>disabled:</strong> Input is disabled and can't be used</li>
+            <li><strong>readonly:</strong> Input can't be edited</li>
+            <li><strong>maxlength:</strong> Maximum number of characters</li>
+            <li><strong>min/max:</strong> Minimum/maximum values for number inputs</li>
+        </ul>
+        
+        <h2>Labels</h2>
+        <p>Always use labels with inputs for better accessibility and usability:</p>
+        
+        <div class="code-block">
+&lt;!-- Good: Label associated with input --&gt;
+&lt;label for="email"&gt;Email:&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;
+
+&lt;!-- Good: Label wraps input --&gt;
+&lt;label&gt;
+    &lt;input type="checkbox"&gt;
+    Remember me
+&lt;/label&gt;
+        </div>
+        
+        <h2>Form Buttons</h2>
+        
+        <div class="code-block">
+&lt;!-- Submit button (sends form) --&gt;
+&lt;button type="submit"&gt;Submit&lt;/button&gt;
+
+&lt;!-- Reset button (clears form) --&gt;
+&lt;button type="reset"&gt;Clear Form&lt;/button&gt;
+
+&lt;!-- Regular button --&gt;
+&lt;button type="button"&gt;Click Me&lt;/button&gt;
+        </div>
+        
+        <div class="demo-box">
+            <button type="submit">Submit</button>
+            <button type="reset">Clear Form</button>
+            <button type="button">Click Me</button>
+        </div>
+        
+        <h2>Complete Form Example</h2>
+        
+        <div class="code-block">
+&lt;form action="/contact" method="POST"&gt;
+    &lt;div&gt;
+        &lt;label for="name"&gt;Full Name:&lt;/label&gt;
+        &lt;input type="text" id="name" name="name" required&gt;
+    &lt;/div&gt;
+    
+    &lt;div&gt;
+        &lt;label for="email"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" required&gt;
+    &lt;/div&gt;
+    
+    &lt;div&gt;
+        &lt;label for="subject"&gt;Subject:&lt;/label&gt;
+        &lt;select id="subject" name="subject"&gt;
+            &lt;option value="sales"&gt;Sales&lt;/option&gt;
+            &lt;option value="support"&gt;Support&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+    
+    &lt;div&gt;
+        &lt;label for="message"&gt;Message:&lt;/label&gt;
+        &lt;textarea id="message" name="message" rows="5"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    
+    &lt;button type="submit"&gt;Send Message&lt;/button&gt;
+&lt;/form&gt;
+        </div>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>Use &lt;form&gt; to create a form with action and method</li>
+            <li>Use various input types for different data (text, email, number, etc.)</li>
+            <li>Use labels for better accessibility and usability</li>
+            <li>Use required attribute for validation</li>
+            <li>Use select for drop-down menus, textarea for multi-line text</li>
+            <li>Always test forms to ensure they work correctly</li>
+        </ul>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="05-html-lists.html">← Previous</a> | 
+            <a href="07-css-introduction.html">Next: CSS Introduction →</a>
+        </div>
+    </div>
+</body>
+</html>

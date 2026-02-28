@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 - Layouts & Positioning</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .demo-box {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        .layout-demo {
+            border: 2px solid #667eea;
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+        .layout-item {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            margin: 5px;
+            border-radius: 3px;
+            text-align: center;
+        }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="10-css-boxmodel.html">← Previous</a>
+            <a href="12-css-flexbox.html">Next →</a>
+        </nav>
+        
+        <h1>🎨 Lesson 11: Layouts & Positioning</h1>
+        
+        <h2>The Display Property</h2>
+        <p>The <code>display</code> property controls how an element is laid out on the page. It's one of the most important CSS properties.</p>
+        
+        <h3>display: block</h3>
+        <p>Block elements take up the full width available and start on a new line. Examples: &lt;div&gt;, &lt;p&gt;, &lt;h1&gt;, &lt;section&gt;</p>
+        
+        <div class="code-block">
+display: block;
+width: 100%;
+height: auto;
+        </div>
+        
+        <div class="layout-demo">
+            <div class="layout-item">Block 1 (100% width)</div>
+            <div class="layout-item">Block 2 (100% width, new line)</div>
+            <div class="layout-item">Block 3 (100% width, new line)</div>
+        </div>
+        
+        <h3>display: inline</h3>
+        <p>Inline elements only take up as much width as needed and don't start a new line. Examples: &lt;a&gt;, &lt;span&gt;, &lt;strong&gt;</p>
+        
+        <div class="code-block">
+display: inline;
+/* Width and height don't apply */
+/* Margin only works horizontally */
+        </div>
+        
+        <div class="demo-box">
+            <span style="display: inline; background: #667eea; color: white; padding: 5px;">Inline 1</span>
+            <span style="display: inline; background: #667eea; color: white; padding: 5px;">Inline 2</span>
+            <span style="display: inline; background: #667eea; color: white; padding: 5px;">Inline 3</span>
+        </div>
+        
+        <h3>display: inline-block</h3>
+        <p>Combines block and inline. Elements flow inline but respect width, height, and margin.</p>
+        
+        <div class="code-block">
+display: inline-block;
+width: 150px;
+height: 100px;
+        </div>
+        
+        <div class="demo-box">
+            <span style="display: inline-block; width: 100px; height: 50px; background: #667eea; color: white; text-align: center; line-height: 50px; margin: 5px;">Box 1</span>
+            <span style="display: inline-block; width: 100px; height: 50px; background: #667eea; color: white; text-align: center; line-height: 50px; margin: 5px;">Box 2</span>
+            <span style="display: inline-block; width: 100px; height: 50px; background: #667eea; color: white; text-align: center; line-height: 50px; margin: 5px;">Box 3</span>
+        </div>
+        
+        <h3>display: none</h3>
+        <p>Hides the element completely (removes it from document flow):</p>
+        
+        <div class="code-block">
+display: none;
+/* Element is completely hidden */
+
+/* Also: */
+visibility: hidden;     /* Hidden but takes up space */
+        </div>
+        
+        <h2>Position Property</h2>
+        <p>The <code>position</code> property controls how an element is positioned on the page.</p>
+        
+        <h3>position: static (Default)</h3>
+        <p>Element flows normally in the document. Top, bottom, left, right have no effect.</p>
+        
+        <div class="code-block">
+position: static;
+        </div>
+        
+        <h3>position: relative</h3>
+        <p>Element flows normally, but can be offset relative to its normal position.</p>
+        
+        <div class="code-block">
+position: relative;
+top: 20px;         /* Move down 20px */
+left: 10px;        /* Move right 10px */
+        </div>
+        
+        <div class="demo-box">
+            <div style="background: #e8f4f8; padding: 10px; border: 1px solid #667eea; margin-bottom: 10px;">
+                Normal position
+            </div>
+            <div style="background: #ffe8e8; padding: 10px; border: 1px solid #ff6666; position: relative; top: 20px; left: 20px;">
+                Relative position (top: 20px, left: 20px)
+            </div>
+            <div style="background: #e8f4f8; padding: 10px; border: 1px solid #667eea;">
+                Space is reserved for the relative box above
+            </div>
+        </div>
+        
+        <h3>position: absolute</h3>
+        <p>Element is removed from document flow and positioned relative to its nearest positioned parent.</p>
+        
+        <div class="code-block">
+position: absolute;
+top: 50px;
+left: 100px;
+        </div>
+        
+        <div class="layout-demo" style="position: relative; height: 150px;">
+            <div style="position: absolute; top: 10px; left: 10px; background: #667eea; color: white; padding: 10px;">
+                Top-left (10px, 10px)
+            </div>
+            <div style="position: absolute; top: 10px; right: 10px; background: #667eea; color: white; padding: 10px;">
+                Top-right
+            </div>
+            <div style="position: absolute; bottom: 10px; left: 10px; background: #667eea; color: white; padding: 10px;">
+                Bottom-left
+            </div>
+        </div>
+        
+        <h3>position: fixed</h3>
+        <p>Element is positioned relative to the viewport (browser window) and stays there when scrolling.</p>
+        
+        <div class="code-block">
+position: fixed;
+top: 20px;
+right: 20px;
+/* Common for navigation bars and sticky headers */
+        </div>
+        
+        <h3>position: sticky</h3>
+        <p>Element scrolls normally but "sticks" to a position when scrolling past it.</p>
+        
+        <div class="code-block">
+position: sticky;
+top: 0;
+/* Sticks to top when scrolling */
+        </div>
+        
+        <h2>Float</h2>
+        <p>Float is an older layout method. Still useful for wrapping text around images. Flexbox is preferred for layouts.</p>
+        
+        <div class="code-block">
+float: left;    /* Float to left */
+float: right;   /* Float to right */
+float: none;    /* No float (default) */
+
+/* Clear floats */
+clear: both;    /* Don't float next to floated elements */
+        </div>
+        
+        <h2>Z-Index</h2>
+        <p>Controls stacking order when elements overlap. Higher values appear on top.</p>
+        
+        <div class="code-block">
+position: absolute;
+z-index: 10;    /* On top */
+
+/* Another element */
+position: absolute;
+z-index: 1;     /* Behind */
+        </div>
+        
+        <div class="layout-demo" style="height: 120px; position: relative;">
+            <div style="position: absolute; top: 0; left: 0; width: 100px; height: 100px; background: red; z-index: 1; opacity: 0.7;">
+                z-index: 1
+            </div>
+            <div style="position: absolute; top: 20px; left: 20px; width: 100px; height: 100px; background: blue; z-index: 10; opacity: 0.7;">
+                z-index: 10 (on top)
+            </div>
+        </div>
+        
+        <h2>Width and Height with Positioning</h2>
+        
+        <div class="code-block">
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+/* Stretches to fill container */
+
+width: 100%;
+height: 100%;
+/* Alternative approach */
+        </div>
+        
+        <h2>Common Layout Pattern: Sticky Header</h2>
+        
+        <div class="code-block">
+header {
+    position: sticky;
+    top: 0;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* Stays at top while scrolling */
+}
+        </div>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li><code>display: block</code> takes full width, starts new line</li>
+            <li><code>display: inline</code> flows with text, no width/height</li>
+            <li><code>display: inline-block</code> combines both approaches</li>
+            <li><code>position: relative</code> moves element from its normal position</li>
+            <li><code>position: absolute</code> removes from flow, positions relative to parent</li>
+            <li><code>position: fixed</code> stays fixed in viewport</li>
+            <li><code>position: sticky</code> scrolls then sticks</li>
+            <li>Use <code>z-index</code> to control stacking order</li>
+        </ul>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="10-css-boxmodel.html">← Previous</a> | 
+            <a href="12-css-flexbox.html">Next: Flexbox →</a>
+        </div>
+    </div>
+</body>
+</html>

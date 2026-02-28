@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 - Operators & Logic</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .demo-box {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background: #667eea;
+            color: white;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #764ba2; }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="14-js-variables.html">← Previous</a>
+            <a href="16-js-functions.html">Next →</a>
+        </nav>
+        
+        <h1>⚙️ Lesson 15: Operators & Logic</h1>
+        
+        <h2>Arithmetic Operators</h2>
+        <p>Perform mathematical calculations:</p>
+        
+        <div class="code-block">
+let a = 10;
+let b = 3;
+
+console.log(a + b);     // 13 - Addition
+console.log(a - b);     // 7  - Subtraction
+console.log(a * b);     // 30 - Multiplication
+console.log(a / b);     // 3.33... - Division
+console.log(a % b);     // 1  - Modulo (remainder)
+console.log(a ** b);    // 1000 - Exponentiation
+        </div>
+        
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Name</th>
+                <th>Example</th>
+                <th>Result</th>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>Addition</td>
+                <td>5 + 3</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>Subtraction</td>
+                <td>5 - 3</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>Multiplication</td>
+                <td>5 * 3</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>/</td>
+                <td>Division</td>
+                <td>6 / 3</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>%</td>
+                <td>Modulo</td>
+                <td>5 % 3</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>**</td>
+                <td>Exponentiation</td>
+                <td>2 ** 3</td>
+                <td>8</td>
+            </tr>
+        </table>
+        
+        <h2>Assignment Operators</h2>
+        <p>Assign and modify variables:</p>
+        
+        <div class="code-block">
+let x = 10;
+
+x += 5;     // x = x + 5  → 15
+x -= 3;     // x = x - 3  → 12
+x *= 2;     // x = x * 2  → 24
+x /= 4;     // x = x / 4  → 6
+x %= 4;     // x = x % 4  → 2
+        </div>
+        
+        <h2>Comparison Operators</h2>
+        <p>Compare values and return true or false:</p>
+        
+        <div class="code-block">
+let a = 5;
+let b = "5";
+
+console.log(a == b);    // true  - Equal (value only)
+console.log(a === b);   // false - Strict equal (value and type)
+console.log(a != b);    // false - Not equal
+console.log(a !== b);   // true  - Strict not equal
+console.log(a > 3);     // true  - Greater than
+console.log(a < 3);     // false - Less than
+console.log(a >= 5);    // true  - Greater than or equal
+console.log(a <= 5);    // true  - Less than or equal
+        </div>
+        
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>==</td>
+                <td>Equal (loose)</td>
+                <td>5 == "5" → true</td>
+            </tr>
+            <tr>
+                <td>===</td>
+                <td>Equal (strict)</td>
+                <td>5 === "5" → false</td>
+            </tr>
+            <tr>
+                <td>!=</td>
+                <td>Not equal</td>
+                <td>5 != 3 → true</td>
+            </tr>
+            <tr>
+                <td>!==</td>
+                <td>Strictly not equal</td>
+                <td>5 !== "5" → true</td>
+            </tr>
+            <tr>
+                <td>&gt;</td>
+                <td>Greater than</td>
+                <td>5 &gt; 3 → true</td>
+            </tr>
+            <tr>
+                <td>&lt;</td>
+                <td>Less than</td>
+                <td>5 &lt; 3 → false</td>
+            </tr>
+        </table>
+        
+        <h2>Logical Operators</h2>
+        <p>Combine boolean values:</p>
+        
+        <h3>AND (&&)</h3>
+        <p>True if both conditions are true:</p>
+        <div class="code-block">
+let age = 25;
+let hasLicense = true;
+
+if (age >= 18 && hasLicense) {
+    console.log("Can drive");
+}
+        </div>
+        
+        <h3>OR (||)</h3>
+        <p>True if at least one condition is true:</p>
+        <div class="code-block">
+let isWeekend = false;
+let isHoliday = true;
+
+if (isWeekend || isHoliday) {
+    console.log("No work today");
+}
+        </div>
+        
+        <h3>NOT (!)</h3>
+        <p>Reverses the boolean value:</p>
+        <div class="code-block">
+let isRaining = true;
+
+if (!isRaining) {
+    console.log("Bring umbrella");
+} else {
+    console.log("Don't need umbrella");
+}
+        </div>
+        
+        <h2>If / Else Statements</h2>
+        <p>Execute code conditionally:</p>
+        
+        <h3>Simple If</h3>
+        <div class="code-block">
+if (age >= 18) {
+    console.log("You are an adult");
+}
+        </div>
+        
+        <h3>If / Else</h3>
+        <div class="code-block">
+if (age >= 18) {
+    console.log("You are an adult");
+} else {
+    console.log("You are a minor");
+}
+        </div>
+        
+        <h3>If / Else If / Else</h3>
+        <div class="code-block">
+if (grade >= 90) {
+    console.log("A");
+} else if (grade >= 80) {
+    console.log("B");
+} else if (grade >= 70) {
+    console.log("C");
+} else {
+    console.log("F");
+}
+        </div>
+        
+        <div class="demo-box">
+            <input type="number" id="gradeInput" placeholder="Enter grade (0-100)" min="0" max="100" style="padding: 8px; width: 150px; border: 1px solid #ddd; border-radius: 3px;">
+            <button onclick="gradeCheck()">Check Grade</button>
+        </div>
+        
+        <h2>Switch Statement</h2>
+        <p>Execute different code for different values:</p>
+        
+        <div class="code-block">
+let day = 3;
+let dayName;
+
+switch (day) {
+    case 1:
+        dayName = "Monday";
+        break;
+    case 2:
+        dayName = "Tuesday";
+        break;
+    case 3:
+        dayName = "Wednesday";
+        break;
+    default:
+        dayName = "Unknown";
+}
+
+console.log(dayName);  // "Wednesday"
+        </div>
+        
+        <h2>Ternary Operator</h2>
+        <p>Shorthand for if/else:</p>
+        
+        <div class="code-block">
+let age = 20;
+
+// Long way
+let status;
+if (age >= 18) {
+    status = "Adult";
+} else {
+    status = "Minor";
+}
+
+// Short way with ternary
+let status = age >= 18 ? "Adult" : "Minor";
+        </div>
+        
+        <h2>Increment and Decrement</h2>
+        
+        <div class="code-block">
+let count = 5;
+
+count++;    // 6 - Increment by 1
+count--;    // 5 - Decrement by 1
+++count;    // 6 - Increment before returning
+count++;    // 7 - Increment after returning
+        </div>
+        
+        <h2>Loops</h2>
+        
+        <h3>For Loop</h3>
+        <div class="code-block">
+for (let i = 0; i < 5; i++) {
+    console.log(i);  // Prints 0, 1, 2, 3, 4
+}
+        </div>
+        
+        <h3>While Loop</h3>
+        <div class="code-block">
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}
+        </div>
+        
+        <h3>Do While Loop</h3>
+        <div class="code-block">
+let i = 0;
+do {
+    console.log(i);
+    i++;
+} while (i < 5);
+        </div>
+        
+        <h3>For Each (Array)</h3>
+        <div class="code-block">
+let fruits = ["Apple", "Banana", "Orange"];
+
+fruits.forEach(function(fruit) {
+    console.log(fruit);
+});
+        </div>
+        
+        <h2>Operator Precedence</h2>
+        <p>Operations are evaluated in this order (highest to lowest):</p>
+        <ul>
+            <li>Parentheses: ()</li>
+            <li>Exponentiation: **</li>
+            <li>Multiplication/Division/Modulo: *, /, %</li>
+            <li>Addition/Subtraction: +, -</li>
+            <li>Comparison: &lt;, &gt;, &lt;=, &gt;=</li>
+            <li>Equality: ==, ===, !=, !==</li>
+            <li>Logical AND: &&</li>
+            <li>Logical OR: ||</li>
+            <li>Assignment: =, +=, -=, etc.</li>
+        </ul>
+        
+        <div class="code-block">
+let result = 2 + 3 * 4;    // 14 (not 20) - multiplication first
+let result = (2 + 3) * 4;  // 20 - parentheses first
+        </div>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>Use arithmetic operators for math</li>
+            <li>Use comparison operators to test conditions</li>
+            <li>Use logical operators to combine conditions</li>
+            <li>Use if/else for conditional execution</li>
+            <li>Use loops to repeat code</li>
+            <li>Always use === instead of == (strict equality)</li>
+        </ul>
+        
+        <script>
+            function gradeCheck() {
+                let grade = parseInt(document.getElementById('gradeInput').value);
+                let letterGrade;
+                
+                if (grade >= 90) letterGrade = "A";
+                else if (grade >= 80) letterGrade = "B";
+                else if (grade >= 70) letterGrade = "C";
+                else if (grade >= 60) letterGrade = "D";
+                else letterGrade = "F";
+                
+                alert(`Grade: ${grade} = Letter: ${letterGrade}`);
+            }
+        </script>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="14-js-variables.html">← Previous</a> | 
+            <a href="16-js-functions.html">Next: Functions →</a>
+        </div>
+    </div>
+</body>
+</html>

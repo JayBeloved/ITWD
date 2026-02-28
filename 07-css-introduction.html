@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07 - Introduction to CSS</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .demo-box {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .comparison > div {
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .before {
+            background: #ffcccc;
+            border: 1px solid #ff6666;
+        }
+        .after {
+            background: #ccffcc;
+            border: 1px solid #66ff66;
+        }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="06-html-forms.html">← Previous</a>
+            <a href="08-css-selectors.html">Next →</a>
+        </nav>
+        
+        <h1>🎨 Lesson 7: Introduction to CSS</h1>
+        
+        <div class="demo-box">
+            <strong>What is CSS?</strong> CSS stands for Cascading Style Sheets. It's used to style and layout web pages - controlling colors, fonts, spacing, positioning, and more.
+        </div>
+        
+        <h2>Why CSS?</h2>
+        <p>Without CSS, all websites would look plain and unstyled. CSS allows you to:</p>
+        <ul>
+            <li>Change colors, fonts, and text sizes</li>
+            <li>Add spacing and margins</li>
+            <li>Create layouts and position elements</li>
+            <li>Add animations and transitions</li>
+            <li>Make responsive designs for mobile and desktop</li>
+            <li>Separate style from content</li>
+        </ul>
+        
+        <h2>Three Ways to Add CSS</h2>
+        
+        <h3>1. Inline Styles</h3>
+        <p>Add CSS directly to an HTML element with the <code>style</code> attribute:</p>
+        
+        <div class="code-block">
+&lt;p style="color: blue; font-size: 18px;"&gt;This paragraph is blue.&lt;/p&gt;
+        </div>
+        
+        <div class="demo-box">
+            <p style="color: blue; font-size: 18px;">This paragraph is blue.</p>
+        </div>
+        
+        <h3>2. Internal Stylesheet</h3>
+        <p>Add CSS in the &lt;head&gt; section inside &lt;style&gt; tags:</p>
+        
+        <div class="code-block">
+&lt;head&gt;
+    &lt;style&gt;
+        p {
+            color: green;
+            font-size: 16px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;This paragraph is green.&lt;/p&gt;
+&lt;/body&gt;
+        </div>
+        
+        <h3>3. External Stylesheet (BEST PRACTICE)</h3>
+        <p>Create a separate CSS file and link it in the HTML:</p>
+        
+        <div class="code-block">
+&lt;!-- In your HTML file --&gt;
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+
+&lt;!-- In styles.css --&gt;
+p {
+    color: purple;
+    font-size: 16px;
+}
+        </div>
+        
+        <h2>CSS Rule Structure</h2>
+        
+        <div class="demo-box">
+            <pre>selector {
+    property: value;
+    property: value;
+}</pre>
+        </div>
+        
+        <p>Breaking it down:</p>
+        <ul>
+            <li><strong>Selector:</strong> Which HTML element(s) to style</li>
+            <li><strong>Property:</strong> What aspect to change (color, size, etc.)</li>
+            <li><strong>Value:</strong> What the property should be set to</li>
+        </ul>
+        
+        <h2>Simple Example</h2>
+        
+        <div class="code-block">
+h1 {
+    color: #667eea;
+    font-size: 32px;
+    text-align: center;
+}
+        </div>
+        
+        <p>This CSS rule sets all &lt;h1&gt; elements to be blue, 32 pixels large, and centered.</p>
+        
+        <h2>Common CSS Properties</h2>
+        
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <tr style="background: #667eea; color: white;">
+                <th style="padding: 10px; border: 1px solid #ddd;">Property</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Purpose</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Example</th>
+            </tr>
+            <tr style="border: 1px solid #ddd;">
+                <td style="padding: 10px;">color</td>
+                <td style="padding: 10px;">Text color</td>
+                <td style="padding: 10px;">color: blue;</td>
+            </tr>
+            <tr style="background: #f9f9f9; border: 1px solid #ddd;">
+                <td style="padding: 10px;">background-color</td>
+                <td style="padding: 10px;">Background color</td>
+                <td style="padding: 10px;">background-color: yellow;</td>
+            </tr>
+            <tr style="border: 1px solid #ddd;">
+                <td style="padding: 10px;">font-size</td>
+                <td style="padding: 10px;">Size of text</td>
+                <td style="padding: 10px;">font-size: 18px;</td>
+            </tr>
+            <tr style="background: #f9f9f9; border: 1px solid #ddd;">
+                <td style="padding: 10px;">font-family</td>
+                <td style="padding: 10px;">Font typeface</td>
+                <td style="padding: 10px;">font-family: Arial;</td>
+            </tr>
+            <tr style="border: 1px solid #ddd;">
+                <td style="padding: 10px;">margin</td>
+                <td style="padding: 10px;">Space outside element</td>
+                <td style="padding: 10px;">margin: 20px;</td>
+            </tr>
+            <tr style="background: #f9f9f9; border: 1px solid #ddd;">
+                <td style="padding: 10px;">padding</td>
+                <td style="padding: 10px;">Space inside element</td>
+                <td style="padding: 10px;">padding: 15px;</td>
+            </tr>
+            <tr style="border: 1px solid #ddd;">
+                <td style="padding: 10px;">border</td>
+                <td style="padding: 10px;">Edge around element</td>
+                <td style="padding: 10px;">border: 1px solid black;</td>
+            </tr>
+        </table>
+        
+        <h2>Before and After Example</h2>
+        
+        <div class="comparison">
+            <div class="before">
+                <h3>WITHOUT CSS</h3>
+                <p>This is plain text in default browser style. No colors, no spacing, just basic HTML.</p>
+            </div>
+            <div class="after">
+                <h3 style="color: #667eea;">WITH CSS</h3>
+                <p style="color: #555; font-size: 16px; line-height: 1.8;">This text has been styled with CSS. Notice the color, spacing, and improved readability.</p>
+            </div>
+        </div>
+        
+        <h2>CSS Cascade and Specificity</h2>
+        <p>CSS stands for "Cascading" Style Sheets because:</p>
+        <ul>
+            <li>Multiple styles can apply to the same element</li>
+            <li>Styles "cascade" - later rules override earlier ones</li>
+            <li>More specific selectors override less specific ones</li>
+            <li>Inline styles override everything</li>
+        </ul>
+        
+        <h2>Comments in CSS</h2>
+        <p>Use comments to explain your CSS code:</p>
+        
+        <div class="code-block">
+/* This is a single-line comment */
+
+/* This is a multi-line comment
+   that spans multiple lines
+   to explain complex styles */
+
+p {
+    color: blue; /* Set text color to blue */
+}
+        </div>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>CSS is used to style and layout web pages</li>
+            <li>CSS rules have selectors, properties, and values</li>
+            <li>External stylesheets are the best practice</li>
+            <li>CSS properties control appearance (color, size, spacing, etc.)</li>
+            <li>Later rules override earlier ones (cascade)</li>
+        </ul>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="06-html-forms.html">← Previous</a> | 
+            <a href="08-css-selectors.html">Next: Selectors & Properties →</a>
+        </div>
+    </div>
+</body>
+</html>

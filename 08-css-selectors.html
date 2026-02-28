@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08 - CSS Selectors & Properties</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .demo-box {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        .selector-demo {
+            background: #fff3cd;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #ff9800;
+            border-radius: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background: #667eea;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="07-css-introduction.html">← Previous</a>
+            <a href="09-css-colors-fonts.html">Next →</a>
+        </nav>
+        
+        <h1>🎨 Lesson 8: CSS Selectors & Properties</h1>
+        
+        <h2>CSS Selectors</h2>
+        <p>Selectors determine which HTML elements your CSS rules apply to. Different selectors target different elements in different ways.</p>
+        
+        <h2>1. Element Selectors</h2>
+        <p>Target all elements of a specific type:</p>
+        
+        <div class="code-block">
+p {
+    color: blue;
+}
+
+div {
+    background: yellow;
+}
+
+h1 {
+    font-size: 32px;
+}
+        </div>
+        
+        <h2>2. Class Selectors</h2>
+        <p>Target elements with a specific class. Use a dot (.) prefix. Multiple elements can share the same class.</p>
+        
+        <div class="code-block">
+.highlight {
+    background: yellow;
+    padding: 10px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+        </div>
+        
+        <div class="code-block">
+&lt;p class="highlight"&gt;This paragraph is highlighted.&lt;/p&gt;
+&lt;p class="error"&gt;This is an error message.&lt;/p&gt;
+&lt;p class="highlight error"&gt;This has two classes.&lt;/p&gt;
+        </div>
+        
+        <h2>3. ID Selectors</h2>
+        <p>Target a specific element with a unique ID. Use a hash (#) prefix. IDs should be unique!<br>
+        <strong>Note:</strong> Use classes instead of IDs in most cases.</p>
+        
+        <div class="code-block">
+#header {
+    background: navy;
+    color: white;
+}
+
+#footer {
+    text-align: center;
+}
+        </div>
+        
+        <div class="code-block">
+&lt;header id="header"&gt;Top of page&lt;/header&gt;
+&lt;footer id="footer"&gt;Bottom of page&lt;/footer&gt;
+        </div>
+        
+        <h2>4. Descendant Selectors</h2>
+        <p>Target elements nested inside other elements. Use a space to separate:</p>
+        
+        <div class="code-block">
+/* Target all p tags inside a div */
+div p {
+    color: blue;
+}
+
+/* Target all links inside navigation */
+nav a {
+    color: white;
+}
+
+/* Target all list items inside an unordered list */
+ul li {
+    margin: 5px 0;
+}
+        </div>
+        
+        <h2>5. Attribute Selectors</h2>
+        <p>Target elements based on their attributes:</p>
+        
+        <div class="code-block">
+/* Target all inputs with type="text" */
+input[type="text"] {
+    border: 1px solid blue;
+}
+
+/* Target all links with href starting with "https" */
+a[href^="https"] {
+    padding-right: 20px;
+}
+
+/* Target all images with alt attribute */
+img[alt] {
+    border: 1px solid gray;
+}
+
+/* Target all elements with disabled attribute */
+[disabled] {
+    opacity: 0.5;
+}
+        </div>
+        
+        <h2>6. Pseudo-Classes</h2>
+        <p>Target elements based on their state or position. Use a colon (:):</p>
+        
+        <div class="code-block">
+/* Links that haven't been visited */
+a:link {
+    color: blue;
+}
+
+/* Links that have been visited */
+a:visited {
+    color: purple;
+}
+
+/* When hovering over an element */
+button:hover {
+    background: darkblue;
+}
+
+/* When an element has focus */
+input:focus {
+    outline: 2px solid blue;
+}
+
+/* First child element */
+li:first-child {
+    font-weight: bold;
+}
+
+/* Last child element */
+li:last-child {
+    border-bottom: none;
+}
+
+/* Every other element */
+li:nth-child(even) {
+    background: #f0f0f0;
+}
+        </div>
+        
+        <div class="selector-demo">
+            Try hovering over this text to see pseudo-classes in action:
+            <a href="#" style="display: inline-block; padding: 10px 20px; background: #667eea; color: white; text-decoration: none; border-radius: 5px; transition: background 0.3s;" onmouseover="this.style.background='#764ba2'" onmouseout="this.style.background='#667eea'">Hover Me</a>
+        </div>
+        
+        <h2>7. Pseudo-Elements</h2>
+        <p>Target specific parts of elements. Use double colons (::):</p>
+        
+        <div class="code-block">
+/* First letter of text */
+p::first-letter {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+/* First line of text */
+p::first-line {
+    color: blue;
+}
+
+/* Content before an element */
+p::before {
+    content: "→ ";
+    color: red;
+}
+
+/* Content after an element */
+p::after {
+    content: " ←";
+    color: red;
+}
+        </div>
+        
+        <h2>8. Combinators</h2>
+        <p>Combine multiple selectors in specific ways:</p>
+        
+        <table>
+            <tr>
+                <th>Combinator</th>
+                <th>Name</th>
+                <th>Example</th>
+                <th>Meaning</th>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Descendant</td>
+                <td>div p</td>
+                <td>All p inside any div</td>
+            </tr>
+            <tr>
+                <td>&gt;</td>
+                <td>Child</td>
+                <td>div &gt; p</td>
+                <td>All p that are direct children of div</td>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>Adjacent Sibling</td>
+                <td>h2 + p</td>
+                <td>p immediately after h2</td>
+            </tr>
+            <tr>
+                <td>~</td>
+                <td>General Sibling</td>
+                <td>h2 ~ p</td>
+                <td>All p that come after h2 (same parent)</td>
+            </tr>
+            <tr>
+                <td>,</td>
+                <td>Multiple</td>
+                <td>h1, h2, h3</td>
+                <td>h1 AND h2 AND h3</td>
+            </tr>
+        </table>
+        
+        <h2>Specificity</h2>
+        <p>When multiple selectors target the same element, more specific selectors win. Specificity order (from lowest to highest):</p>
+        <ol>
+            <li>Element selectors (p, div, h1)</li>
+            <li>Class selectors (.highlight, .error)</li>
+            <li>ID selectors (#header, #footer)</li>
+            <li>Inline styles (style="")</li>
+        </ol>
+        
+        <div class="code-block">
+/* These rules conflict - which wins? */
+
+/* Specificity: 1 (element) */
+p { color: blue; }
+
+/* Specificity: 10 (class) - WINS */
+.highlight { color: yellow; }
+
+/* Specificity: 100 (ID) - WINS */
+#main-paragraph { color: red; }
+
+/* Specificity: 1000 (inline) - WINS */
+&lt;p style="color: green;"&gt;
+        </div>
+        
+        <h2>Common CSS Properties</h2>
+        
+        <table>
+            <tr>
+                <th>Property</th>
+                <th>Purpose</th>
+                <th>Examples</th>
+            </tr>
+            <tr>
+                <td>color</td>
+                <td>Text color</td>
+                <td>color: red; color: #667eea; color: rgb(102, 126, 234);</td>
+            </tr>
+            <tr>
+                <td>background-color</td>
+                <td>Background color</td>
+                <td>background-color: yellow; background-color: #f0f0f0;</td>
+            </tr>
+            <tr>
+                <td>font-size</td>
+                <td>Text size</td>
+                <td>font-size: 16px; font-size: 1.5em; font-size: 100%;</td>
+            </tr>
+            <tr>
+                <td>font-weight</td>
+                <td>Text thickness</td>
+                <td>font-weight: bold; font-weight: 700;</td>
+            </tr>
+            <tr>
+                <td>text-align</td>
+                <td>Horizontal alignment</td>
+                <td>text-align: center; text-align: right;</td>
+            </tr>
+            <tr>
+                <td>margin</td>
+                <td>Space outside element</td>
+                <td>margin: 20px; margin: 10px 20px;</td>
+            </tr>
+            <tr>
+                <td>padding</td>
+                <td>Space inside element</td>
+                <td>padding: 15px; padding: 10px 20px;</td>
+            </tr>
+            <tr>
+                <td>border</td>
+                <td>Element border</td>
+                <td>border: 1px solid black; border: 2px dashed red;</td>
+            </tr>
+            <tr>
+                <td>display</td>
+                <td>How element is shown</td>
+                <td>display: block; display: inline; display: flex;</td>
+            </tr>
+            <tr>
+                <td>width/height</td>
+                <td>Element dimensions</td>
+                <td>width: 100px; height: 50px; width: 100%;</td>
+            </tr>
+        </table>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>Element selectors target all elements of a type</li>
+            <li>Class selectors target elements with a specific class</li>
+            <li>ID selectors target a unique element (use classes instead)</li>
+            <li>Pseudo-classes (`:hover`, `:focus`) target element states</li>
+            <li>Pseudo-elements (`::before`, `::after`) target parts of elements</li>
+            <li>Specificity determines which rules apply when there are conflicts</li>
+        </ul>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="07-css-introduction.html">← Previous</a> | 
+            <a href="09-css-colors-fonts.html">Next: Colors & Typography →</a>
+        </div>
+    </div>
+</body>
+</html>

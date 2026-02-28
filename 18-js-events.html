@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18 - Events & Interactivity</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .demo-box {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background: #667eea;
+            color: white;
+        }
+        .demo-area {
+            background: #f9f9f9;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        button:hover { background: #764ba2; }
+        .event-output {
+            background: #fff9c4;
+            padding: 10px;
+            margin-top: 10px;
+            border-left: 4px solid #fbc02d;
+            border-radius: 3px;
+        }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="17-js-dom.html">← Previous</a>
+        </nav>
+        
+        <h1>⚙️ Lesson 18: Events & Interactivity</h1>
+        
+        <div class="demo-box">
+            <strong>Events</strong> are actions or occurrences that happen in the browser - like clicking a button, typing in a form, or moving the mouse. JavaScript allows you to respond to these events to create interactive experiences.
+        </div>
+        
+        <h2>What are Events?</h2>
+        <p>Events occur when users interact with your page:</p>
+        <ul>
+            <li><strong>Click:</strong> User clicks an element</li>
+            <li><strong>Hover:</strong> User moves mouse over element</li>
+            <li><strong>Submit:</strong> User submits a form</li>
+            <li><strong>Input:</strong> User types in an input field</li>
+            <li><strong>Load:</strong> Page finishes loading</li>
+            <li><strong>Scroll:</strong> User scrolls the page</li>
+        </ul>
+        
+        <h2>Adding Event Listeners</h2>
+        
+        <h3>Method 1: Inline (Not Recommended)</h3>
+        <p>Add events directly in HTML:</p>
+        
+        <div class="code-block">
+&lt;button onclick="greet()"&gt;Click me&lt;/button&gt;
+
+&lt;script&gt;
+function greet() {
+    alert("Hello!");
+}
+&lt;/script&gt;
+        </div>
+        
+        <h3>Method 2: Direct Assignment</h3>
+        <div class="code-block">
+const button = document.getElementById("myButton");
+
+button.onclick = function() {
+    console.log("Button clicked!");
+};
+        </div>
+        
+        <h3>Method 3: addEventListener() (Best Practice)</h3>
+        <p>Modern and flexible way to handle events:</p>
+        
+        <div class="code-block">
+const button = document.getElementById("myButton");
+
+button.addEventListener("click", function() {
+    console.log("Button clicked!");
+});
+
+// Or with arrow function
+button.addEventListener("click", () => {
+    console.log("Button clicked!");
+});
+        </div>
+        
+        <h2>Common Events</h2>
+        
+        <table>
+            <tr>
+                <th>Event</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>click</td>
+                <td>Element is clicked</td>
+                <td>button.addEventListener("click", handler)</td>
+            </tr>
+            <tr>
+                <td>mouseover</td>
+                <td>Mouse enters element</td>
+                <td>element.addEventListener("mouseover", handler)</td>
+            </tr>
+            <tr>
+                <td>mouseout</td>
+                <td>Mouse leaves element</td>
+                <td>element.addEventListener("mouseout", handler)</td>
+            </tr>
+            <tr>
+                <td>submit</td>
+                <td>Form is submitted</td>
+                <td>form.addEventListener("submit", handler)</td>
+            </tr>
+            <tr>
+                <td>change</td>
+                <td>Select/input value changes</td>
+                <td>input.addEventListener("change", handler)</td>
+            </tr>
+            <tr>
+                <td>keydown/keyup</td>
+                <td>Key is pressed/released</td>
+                <td>input.addEventListener("keydown", handler)</td>
+            </tr>
+            <tr>
+                <td>blur</td>
+                <td>Element loses focus</td>
+                <td>input.addEventListener("blur", handler)</td>
+            </tr>
+            <tr>
+                <td>focus</td>
+                <td>Element gains focus</td>
+                <td>input.addEventListener("focus", handler)</td>
+            </tr>
+            <tr>
+                <td>load</td>
+                <td>Page/image finishes loading</td>
+                <td>window.addEventListener("load", handler)</td>
+            </tr>
+            <tr>
+                <td>scroll</td>
+                <td>Page is scrolled</td>
+                <td>window.addEventListener("scroll", handler)</td>
+            </tr>
+        </table>
+        
+        <h2>Event Object</h2>
+        <p>Event handlers receive an event object with information about what happened:</p>
+        
+        <div class="code-block">
+button.addEventListener("click", function(event) {
+    console.log(event.type);      // "click"
+    console.log(event.target);    // The element clicked
+    console.log(event.pageX);     // Mouse X position
+    console.log(event.pageY);     // Mouse Y position
+});
+        </div>
+        
+        <h2>Interactive Examples</h2>
+        
+        <h3>Click Events</h3>
+        
+        <div class="demo-area">
+            <p id="clickOutput">Click the button to see the event in action</p>
+            <button id="clickBtn">Click Me</button>
+        </div>
+        
+        <h3>Mouse Events</h3>
+        
+        <div class="demo-area">
+            <div id="hoverBox" style="background: #667eea; color: white; padding: 30px; text-align: center; border-radius: 5px;">
+                Hover over me!
+            </div>
+            <p id="hoverOutput"></p>
+        </div>
+        
+        <h3>Input Events</h3>
+        
+        <div class="demo-area">
+            <label for="textInput">Type something:</label><br>
+            <input type="text" id="textInput" placeholder="Type here..." style="padding: 8px; margin: 10px 0; width: 200px; border: 1px solid #ddd; border-radius: 3px;">
+            <p id="inputOutput">You've typed: nothing yet</p>
+        </div>
+        
+        <h3>Form Events</h3>
+        
+        <div class="demo-area">
+            <form id="myForm">
+                <input type="text" id="nameField" placeholder="Enter your name" required style="padding: 8px; margin: 5px; border: 1px solid #ddd; border-radius: 3px;">
+                <input type="email" id="emailField" placeholder="Enter your email" required style="padding: 8px; margin: 5px; border: 1px solid #ddd; border-radius: 3px;">
+                <button type="submit">Submit Form</button>
+            </form>
+            <p id="formOutput"></p>
+        </div>
+        
+        <h2>Event Delegation</h2>
+        <p>Listen for events on a parent element for all children. Useful for dynamic elements:</p>
+        
+        <div class="code-block">
+// Listen on parent
+document.getElementById("list").addEventListener("click", function(event) {
+    if (event.target.tagName === "LI") {
+        console.log("List item clicked: " + event.target.textContent);
+    }
+});
+        </div>
+        
+        <h2>Preventing Default Behavior</h2>
+        <p>Stop default actions with <code>preventDefault()</code>:</p>
+        
+        <div class="code-block">
+// Prevent form submission
+document.getElementById("form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    console.log("Form submitted via JavaScript");
+});
+
+// Prevent link navigation
+document.querySelector("a").addEventListener("click", function(event) {
+    event.preventDefault();
+    console.log("Link click prevented");
+});
+        </div>
+        
+        <h2>Useful Event Properties</h2>
+        
+        <table>
+            <tr>
+                <th>Property</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>event.type</td>
+                <td>Type of event (click, submit, etc.)</td>
+            </tr>
+            <tr>
+                <td>event.target</td>
+                <td>Element that triggered the event</td>
+            </tr>
+            <tr>
+                <td>event.currentTarget</td>
+                <td>Element with the event listener</td>
+            </tr>
+            <tr>
+                <td>event.preventDefault()</td>
+                <td>Stop default behavior</td>
+            </tr>
+            <tr>
+                <td>event.stopPropagation()</td>
+                <td>Stop event bubbling up</td>
+            </tr>
+            <tr>
+                <td>event.pageX / pageY</td>
+                <td>Mouse position on page</td>
+            </tr>
+            <tr>
+                <td>event.key</td>
+                <td>Key pressed (for keyboard events)</td>
+            </tr>
+        </table>
+        
+        <h2>Complete Example: Interactive Counter</h2>
+        
+        <div class="demo-area" style="text-align: center;">
+            <h3>Counter: <span id="counter" style="color: #667eea; font-size: 32px;">0</span></h3>
+            <button onclick="increment()">+</button>
+            <button onclick="decrement()">-</button>
+            <button onclick="resetCounter()">Reset</button>
+            <button onclick="doubleCounter()">Double</button>
+        </div>
+        
+        <h2>Best Practices for Events</h2>
+        <ul>
+            <li>Use <code>addEventListener()</code> instead of inline events</li>
+            <li>Remove unnecessary event listeners to avoid memory leaks</li>
+            <li>Use event delegation for dynamic content</li>
+            <li>Always handle edge cases (null checks, validation)</li>
+            <li>Use meaningful function names for event handlers</li>
+            <li>Keep event handlers focused on one task</li>
+            <li>Test events with different browsers</li>
+        </ul>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>Events are user interactions (click, hover, submit, etc.)</li>
+            <li>Use <code>addEventListener()</code> to handle events</li>
+            <li>The event object contains information about what happened</li>
+            <li>Use <code>preventDefault()</code> to stop default behavior</li>
+            <li>Event delegation is useful for dynamic content</li>
+            <li>Create interactive, responsive web applications with events</li>
+        </ul>
+        
+        <script>
+            // Click Event
+            document.getElementById('clickBtn').addEventListener('click', function() {
+                document.getElementById('clickOutput').innerHTML = '✓ Button clicked! You just handled a click event.';
+                document.getElementById('clickOutput').style.color = '#4CAF50';
+            });
+            
+            // Hover Events
+            const hoverBox = document.getElementById('hoverBox');
+            hoverBox.addEventListener('mouseover', function() {
+                document.getElementById('hoverOutput').innerHTML = 'Mouse is over the box!';
+                this.style.background = '#764ba2';
+            });
+            hoverBox.addEventListener('mouseout', function() {
+                document.getElementById('hoverOutput').innerHTML = '';
+                this.style.background = '#667eea';
+            });
+            
+            // Input Event
+            document.getElementById('textInput').addEventListener('input', function(event) {
+                const text = event.target.value;
+                document.getElementById('inputOutput').innerHTML = 'You\'ve typed: <strong>' + (text || 'nothing yet') + '</strong>';
+            });
+            
+            // Form Event
+            document.getElementById('myForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const name = document.getElementById('nameField').value;
+                const email = document.getElementById('emailField').value;
+                document.getElementById('formOutput').innerHTML = '✓ Form submitted! Name: ' + name + ', Email: ' + email;
+                document.getElementById('formOutput').style.color = '#4CAF50';
+            });
+            
+            // Counter
+            let count = 0;
+            function increment() {
+                count++;
+                updateCounter();
+            }
+            function decrement() {
+                count--;
+                updateCounter();
+            }
+            function resetCounter() {
+                count = 0;
+                updateCounter();
+            }
+            function doubleCounter() {
+                count *= 2;
+                updateCounter();
+            }
+            function updateCounter() {
+                document.getElementById('counter').textContent = count;
+            }
+        </script>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="17-js-dom.html">← Previous</a>
+        </div>
+    </div>
+</body>
+</html>

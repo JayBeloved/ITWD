@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 - Links & Images</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .demo-box {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="03-html-text.html">← Previous</a>
+            <a href="05-html-lists.html">Next →</a>
+        </nav>
+        
+        <h1>📄 Lesson 4: Links & Images</h1>
+        
+        <h2>Hyperlinks (&lt;a&gt; tag)</h2>
+        <p>Links are the foundation of the web. They connect pages and resources together. Use the &lt;a&gt; tag with the <code>href</code> attribute to create links.</p>
+        
+        <h2>Basic Link Syntax</h2>
+        
+        <div class="code-block">
+&lt;a href="https://example.com"&gt;Click here&lt;/a&gt;
+&lt;a href="about.html"&gt;About Us&lt;/a&gt;
+&lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+        </div>
+        
+        <div class="demo-box">
+            <a href="https://example.com" style="color: #667eea;">Click here (external link)</a><br>
+            <a href="05-html-lists.html" style="color: #667eea;">Next Lesson (internal link)</a>
+        </div>
+        
+        <h2>Link Attributes</h2>
+        
+        <h3>href - The Link Destination</h3>
+        <p>The <code>href</code> attribute specifies where the link goes:</p>
+        <ul>
+            <li><strong>Absolute URLs:</strong> Full web address (https://google.com)</li>
+            <li><strong>Relative URLs:</strong> Files in your project (about.html, pages/contact.html)</li>
+            <li><strong>Anchor links:</strong> Sections within a page (#section)</li>
+            <li><strong>Email:</strong> mailto:example@email.com</li>
+            <li><strong>Phone:</strong> tel:+1-555-0000</li>
+        </ul>
+        
+        <div class="code-block">
+&lt;!-- Absolute URL --&gt;
+&lt;a href="https://google.com"&gt;Google&lt;/a&gt;
+
+&lt;!-- Relative URL --&gt;
+&lt;a href="about.html"&gt;About&lt;/a&gt;
+
+&lt;!-- Anchor link --&gt;
+&lt;a href="#section-one"&gt;Go to Section 1&lt;/a&gt;
+
+&lt;!-- Email --&gt;
+&lt;a href="mailto:hello@example.com"&gt;Email Us&lt;/a&gt;
+
+&lt;!-- Phone --&gt;
+&lt;a href="tel:+1-555-0000"&gt;Call us&lt;/a&gt;
+        </div>
+        
+        <h3>target - Where to Open the Link</h3>
+        <p>Control whether links open in the same tab or a new tab:</p>
+        
+        <div class="code-block">
+&lt;a href="https://example.com"&gt;Same tab (default)&lt;/a&gt;
+&lt;a href="https://example.com" target="_blank"&gt;New tab&lt;/a&gt;
+&lt;a href="https://example.com" target="_self"&gt;Same tab (explicit)&lt;/a&gt;
+        </div>
+        
+        <h3>title - Hover Text</h3>
+        <p>Provide additional information with the <code>title</code> attribute:</p>
+        
+        <div class="code-block">
+&lt;a href="https://google.com" title="Search engine"&gt;Google&lt;/a&gt;
+        </div>
+        
+        <h2>Creating Anchor Links</h2>
+        <p>Use anchor links to jump to sections within the same page:</p>
+        
+        <div class="code-block">
+&lt;!-- Navigation --&gt;
+&lt;a href="#about"&gt;Jump to About Section&lt;/a&gt;
+
+&lt;!-- Target section with id --&gt;
+&lt;section id="about"&gt;
+    &lt;h2&gt;About Us&lt;/h2&gt;
+    &lt;p&gt;Our content here...&lt;/p&gt;
+&lt;/section&gt;
+        </div>
+        
+        <h2>Images (&lt;img&gt; tag)</h2>
+        <p>Images make web pages more engaging. Use the &lt;img&gt; tag to display images:</p>
+        
+        <h3>Basic Image Syntax</h3>
+        
+        <div class="code-block">
+&lt;img src="image.jpg" alt="Description of image"&gt;
+        </div>
+        
+        <h3>Important Attributes</h3>
+        <ul>
+            <li><strong>src:</strong> Path to the image file (required)</li>
+            <li><strong>alt:</strong> Alternative text if image can't load (required for accessibility)</li>
+            <li><strong>width:</strong> Image width in pixels or percentage</li>
+            <li><strong>height:</strong> Image height in pixels</li>
+            <li><strong>title:</strong> Hover text</li>
+        </ul>
+        
+        <div class="code-block">
+&lt;img src="photo.jpg" 
+     alt="A sunset over the ocean"
+     width="400"
+     height="300"
+     title="Beautiful sunset"&gt;
+        </div>
+        
+        <h2>Image File Types</h2>
+        <ul>
+            <li><strong>JPG:</strong> Good for photographs and complex images</li>
+            <li><strong>PNG:</strong> Good for icons and images needing transparency</li>
+            <li><strong>GIF:</strong> Good for animations</li>
+            <li><strong>SVG:</strong> Scalable vector graphics (perfect for logos)</li>
+            <li><strong>WebP:</strong> Modern format with better compression</li>
+        </ul>
+        
+        <h2>Image Optimization Tips</h2>
+        <div class="demo-box">
+            <p>✓ Always use the <code>alt</code> attribute</p>
+            <p>✓ Resize images before uploading (don't rely on HTML width/height)</p>
+            <p>✓ Use the correct format for the image type</p>
+            <p>✓ Compress images to reduce file size</p>
+            <p>✓ Use descriptive alt text (not "image" or "picture")</p>
+        </div>
+        
+        <h2>Linking Images</h2>
+        <p>You can wrap an image in a link to make it clickable:</p>
+        
+        <div class="code-block">
+&lt;a href="https://example.com"&gt;
+    &lt;img src="logo.png" alt="Company Logo"&gt;
+&lt;/a&gt;
+        </div>
+        
+        <h2>Responsive Images</h2>
+        <p>Make images responsive to different screen sizes:</p>
+        
+        <div class="code-block">
+&lt;!-- CSS way (most common) --&gt;
+&lt;img src="image.jpg" alt="Description" style="max-width: 100%; height: auto;"&gt;
+
+&lt;!-- HTML picture element (advanced) --&gt;
+&lt;picture&gt;
+    &lt;source media="(min-width: 800px)" srcset="large-image.jpg"&gt;
+    &lt;img src="small-image.jpg" alt="Description"&gt;
+&lt;/picture&gt;
+        </div>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>Use &lt;a&gt; tags to create links with <code>href</code> attribute</li>
+            <li>Use relative URLs for internal links, absolute for external</li>
+            <li>Use <code>target="_blank"</code> to open in new tab</li>
+            <li>Always include <code>alt</code> text for images</li>
+            <li>Use appropriate image formats for different purposes</li>
+            <li>Optimize images for web to improve performance</li>
+        </ul>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="03-html-text.html">← Previous</a> | 
+            <a href="05-html-lists.html">Next: Lists & Tables →</a>
+        </div>
+    </div>
+</body>
+</html>

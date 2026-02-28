@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14 - Variables & Data Types</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .demo-box {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background: #667eea;
+            color: white;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #764ba2; }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="13-js-introduction.html">← Previous</a>
+            <a href="15-js-operators.html">Next →</a>
+        </nav>
+        
+        <h1>⚙️ Lesson 14: Variables & Data Types</h1>
+        
+        <h2>Declaring Variables</h2>
+        <p>Use <code>let</code>, <code>const</code>, or <code>var</code> to declare variables. <code>let</code> and <code>const</code> are modern and recommended.</p>
+        
+        <h3>let - Block Scoped, Reassignable</h3>
+        <p>Modern way to declare variables. Can be reassigned and updated:</p>
+        
+        <div class="code-block">
+let name = "Alice";
+name = "Bob";           // Reassign - OK
+let name = "Carol";     // Redeclare - ERROR
+
+let age = 28;
+age = 29;               // Update - OK
+        </div>
+        
+        <h3>const - Block Scoped, Non-reassignable</h3>
+        <p>Use by default. Values cannot be changed after assignment:</p>
+        
+        <div class="code-block">
+const PI = 3.14159;
+PI = 3.14;              // ERROR - cannot reassign
+
+const person = {
+    name: "Alice",
+    age: 28
+};
+person.age = 29;        // OK - modifying properties
+person = {};            // ERROR - cannot reassign
+        </div>
+        
+        <h3>var - Function Scoped (Avoid)</h3>
+        <p>Old way of declaring variables. Avoid in modern code:</p>
+        
+        <div class="code-block">
+var name = "Alice";
+var name = "Bob";       // OK - redeclare allowed
+        </div>
+        
+        <h2>Variable Naming Rules</h2>
+        <ul>
+            <li>Must start with letter, underscore (_), or dollar sign ($)</li>
+            <li>Can contain letters, digits, underscores, or dollar signs</li>
+            <li>Cannot use JavaScript reserved words (let, if, return, etc.)</li>
+            <li>Are case-sensitive (name and Name are different)</li>
+            <li>Use camelCase for multi-word names: firstName, lastName, isActive</li>
+        </ul>
+        
+        <div class="code-block">
+// Good names
+let firstName = "Alice";
+let lastName = "Smith";
+let isActive = true;
+let _privateVar = "private";
+
+// Bad names
+let fn = "Alice";       // Too short
+let FIRSTNAME = "Alice"; // Use camelCase, not UPPERCASE
+let first-name = "Alice"; // Invalid - no hyphens
+let const = "Alice";    // Reserved word
+        </div>
+        
+        <h2>Primitive Data Types</h2>
+        
+        <h3>Number</h3>
+        <p>Integer or floating-point numbers:</p>
+        
+        <div class="code-block">
+let integer = 42;
+let decimal = 3.14;
+let negative = -10;
+let veryLarge = 1e6;        // 1,000,000
+let infinity = Infinity;
+let notANumber = NaN;       // "Not a Number"
+        </div>
+        
+        <h3>String</h3>
+        <p>Text enclosed in quotes. Can use single, double, or backticks:</p>
+        
+        <div class="code-block">
+let single = 'Hello';
+let double = "World";
+let template = `Hello, ${name}!`;   // Template literal with interpolation
+
+// String methods
+let text = "Hello";
+console.log(text.length);           // 5
+console.log(text.toUpperCase());    // "HELLO"
+console.log(text.toLowerCase());    // "hello"
+        </div>
+        
+        <h3>Boolean</h3>
+        <p>True or false values:</p>
+        
+        <div class="code-block">
+let isActive = true;
+let isEmpty = false;
+
+// Truthiness
+if (1) console.log("1 is truthy");
+if ("") console.log("empty string is falsy");
+if (0) console.log("0 is falsy");
+        </div>
+        
+        <h3>null and undefined</h3>
+        <p>Special values representing "no value":</p>
+        
+        <div class="code-block">
+let x = null;           // Intentionally empty
+let y = undefined;      // Variable declared but not assigned
+let z;                  // Also undefined
+        </div>
+        
+        <h2>Reference Data Types</h2>
+        
+        <h3>Arrays</h3>
+        <p>Ordered collections of values:</p>
+        
+        <div class="code-block">
+let fruits = ["Apple", "Banana", "Orange"];
+let numbers = [1, 2, 3, 4, 5];
+let mixed = [1, "two", true, null];
+
+// Access elements (0-indexed)
+console.log(fruits[0]);     // "Apple"
+console.log(fruits.length); // 3
+
+// Modify arrays
+fruits[0] = "Avocado";      // Change element
+fruits.push("Grape");        // Add to end
+fruits.pop();                // Remove last element
+        </div>
+        
+        <div class="demo-box">
+            <button onclick="let arr = [1, 2, 3]; arr.push(4); console.log('Array:', arr); alert('Added 4 to array. Check console!');">Array Example</button>
+        </div>
+        
+        <h3>Objects</h3>
+        <p>Collections of key-value pairs:</p>
+        
+        <div class="code-block">
+let person = {
+    name: "Alice",
+    age: 28,
+    city: "New York",
+    isActive: true
+};
+
+// Access properties
+console.log(person.name);           // "Alice"
+console.log(person["age"]);         // 28
+
+// Modify properties
+person.age = 29;
+person.email = "alice@example.com"; // Add new property
+
+// Delete property
+delete person.city;
+        </div>
+        
+        <h2>Type Conversion</h2>
+        <p>Converting between data types:</p>
+        
+        <h3>String Conversion</h3>
+        <div class="code-block">
+let num = 42;
+let str = String(num);      // "42"
+let str2 = num.toString();  // "42"
+        </div>
+        
+        <h3>Number Conversion</h3>
+        <div class="code-block">
+let str = "42";
+let num = Number(str);      // 42
+let num2 = parseInt(str);   // 42
+let num3 = parseFloat("3.14"); // 3.14
+        </div>
+        
+        <h3>Boolean Conversion</h3>
+        <div class="code-block">
+let bool = Boolean(1);      // true
+let bool2 = Boolean(0);     // false
+let bool3 = Boolean("");    // false
+        </div>
+        
+        <h2>String Template Literals</h2>
+        <p>Use backticks to create strings with interpolation:</p>
+        
+        <div class="code-block">
+let name = "Alice";
+let age = 28;
+
+// Without template literals
+let message = "My name is " + name + " and I am " + age + " years old";
+
+// With template literals
+let message2 = `My name is ${name} and I am ${age} years old`;
+        </div>
+        
+        <h2>Type Checking</h2>
+        <p>Use <code>typeof</code> to check data types:</p>
+        
+        <table>
+            <tr>
+                <th>Value</th>
+                <th>typeof Result</th>
+            </tr>
+            <tr>
+                <td>42</td>
+                <td>"number"</td>
+            </tr>
+            <tr>
+                <td>"hello"</td>
+                <td>"string"</td>
+            </tr>
+            <tr>
+                <td>true</td>
+                <td>"boolean"</td>
+            </tr>
+            <tr>
+                <td>[1, 2, 3]</td>
+                <td>"object"</td>
+            </tr>
+            <tr>
+                <td>{name: "Alice"}</td>
+                <td>"object"</td>
+            </tr>
+            <tr>
+                <td>undefined</td>
+                <td>"undefined"</td>
+            </tr>
+            <tr>
+                <td>null</td>
+                <td>"object"</td>
+            </tr>
+        </table>
+        
+        <h2>Common String Methods</h2>
+        
+        <table>
+            <tr>
+                <th>Method</th>
+                <th>Purpose</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>length</td>
+                <td>Number of characters</td>
+                <td>"hello".length → 5</td>
+            </tr>
+            <tr>
+                <td>toUpperCase()</td>
+                <td>Convert to uppercase</td>
+                <td>"hello".toUpperCase() → "HELLO"</td>
+            </tr>
+            <tr>
+                <td>toLowerCase()</td>
+                <td>Convert to lowercase</td>
+                <td>"HELLO".toLowerCase() → "hello"</td>
+            </tr>
+            <tr>
+                <td>substring()</td>
+                <td>Extract part of string</td>
+                <td>"hello".substring(0, 3) → "hel"</td>
+            </tr>
+            <tr>
+                <td>includes()</td>
+                <td>Check if contains text</td>
+                <td>"hello".includes("ell") → true</td>
+            </tr>
+            <tr>
+                <td>replace()</td>
+                <td>Replace text</td>
+                <td>"hello".replace("l", "x") → "hexlo"</td>
+            </tr>
+            <tr>
+                <td>split()</td>
+                <td>Split into array</td>
+                <td>"a,b,c".split(",") → ["a","b","c"]</td>
+            </tr>
+        </table>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>Use <code>let</code> and <code>const</code> for variables (avoid <code>var</code>)</li>
+            <li><code>const</code> by default, <code>let</code> when reassignment needed</li>
+            <li>Primitive types: number, string, boolean, null, undefined</li>
+            <li>Reference types: arrays, objects</li>
+            <li>Use camelCase for variable names</li>
+            <li>Use template literals for string interpolation</li>
+            <li>Use typeof to check data types</li>
+        </ul>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="13-js-introduction.html">← Previous</a> | 
+            <a href="15-js-operators.html">Next: Operators & Logic →</a>
+        </div>
+    </div>
+</body>
+</html>

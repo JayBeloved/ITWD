@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17 - DOM Manipulation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .demo-box {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        .demo-area {
+            background: #f9f9f9;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #764ba2; }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="16-js-functions.html">← Previous</a>
+            <a href="18-js-events.html">Next →</a>
+        </nav>
+        
+        <h1>⚙️ Lesson 17: DOM Manipulation</h1>
+        
+        <div class="demo-box">
+            <strong>The DOM (Document Object Model)</strong> is a hierarchical representation of your HTML page. JavaScript can access and modify the DOM to change what users see in real-time.
+        </div>
+        
+        <h2>What is the DOM?</h2>
+        <p>The DOM treats your HTML like a tree of objects:</p>
+        
+        <div class="code-block">
+Document
+├── html
+│   ├── head
+│   │   ├── title
+│   │   └── meta
+│   └── body
+│       ├── header
+│       │   └── h1
+│       ├── main
+│       │   ├── p
+│       │   └── button
+│       └── footer
+        </div>
+        
+        <h2>Selecting Elements</h2>
+        
+        <h3>getElementById()</h3>
+        <p>Select element by its ID (unique):</p>
+        
+        <div class="code-block">
+const header = document.getElementById("header");
+        </div>
+        
+        <h3>getElementsByClassName()</h3>
+        <p>Select all elements with a specific class:</p>
+        
+        <div class="code-block">
+const items = document.getElementsByClassName("item");
+        </div>
+        
+        <h3>getElementsByTagName()</h3>
+        <p>Select all elements of a specific type:</p>
+        
+        <div class="code-block">
+const paragraphs = document.getElementsByTagName("p");
+        </div>
+        
+        <h3>querySelector() (Modern - Recommended)</h3>
+        <p>Select using CSS selectors:</p>
+        
+        <div class="code-block">
+const header = document.querySelector("#header");        // ID
+const firstItem = document.querySelector(".item");       // Class
+const firstPara = document.querySelector("p");           // Tag
+const input = document.querySelector("input[type='text']"); // Complex
+        </div>
+        
+        <h3>querySelectorAll()</h3>
+        <p>Select all matching elements:</p>
+        
+        <div class="code-block">
+const allItems = document.querySelectorAll(".item");
+const allParas = document.querySelectorAll("p");
+
+allItems.forEach(item => {
+    console.log(item.textContent);
+});
+        </div>
+        
+        <h2>Modifying Content</h2>
+        
+        <h3>innerText</h3>
+        <p>Change plain text content:</p>
+        
+        <div class="code-block">
+document.getElementById("title").innerText = "New Title";
+        </div>
+        
+        <h3>innerHTML</h3>
+        <p>Change HTML content (be careful with user input!):</p>
+        
+        <div class="code-block">
+document.getElementById("content").innerHTML = "&lt;h2&gt;New Heading&lt;/h2&gt;&lt;p&gt;New paragraph&lt;/p&gt;";
+        </div>
+        
+        <h3>textContent</h3>
+        <p>Get or set text content (safer than innerHTML):</p>
+        
+        <div class="code-block">
+document.getElementById("item").textContent = "Updated text";
+        </div>
+        
+        <h2>Modifying Styles</h2>
+        
+        <h3>Inline Style Manipulation</h3>
+        
+        <div class="code-block">
+const element = document.getElementById("box");
+
+element.style.color = "red";
+element.style.backgroundColor = "yellow";
+element.style.padding = "20px";
+element.style.fontSize = "18px";
+        </div>
+        
+        <div class="demo-area" style="text-align: center;">
+            <p id="styleDemo" style="background: #f0f0f0; padding: 20px; border-radius: 5px;">Hover buttons to change my style</p>
+            <button onclick="document.getElementById('styleDemo').style.backgroundColor = '#667eea'; document.getElementById('styleDemo').style.color = 'white';">Blue Style</button>
+            <button onclick="document.getElementById('styleDemo').style.backgroundColor = '#FF6B6B'; document.getElementById('styleDemo').style.color = 'white';">Red Style</button>
+            <button onclick="document.getElementById('styleDemo').style.fontSize = '24px';">Large Text</button>
+            <button onclick="document.getElementById('styleDemo').style.fontSize = '16px';">Normal Text</button>
+        </div>
+        
+        <h2>Adding and Removing Classes</h2>
+        
+        <h3>classList.add()</h3>
+        <div class="code-block">
+element.classList.add("active");
+element.classList.add("highlighted", "important");  // Multiple classes
+        </div>
+        
+        <h3>classList.remove()</h3>
+        <div class="code-block">
+element.classList.remove("active");
+        </div>
+        
+        <h3>classList.toggle()</h3>
+        <p>Add class if not present, remove if present:</p>
+        <div class="code-block">
+element.classList.toggle("active");
+        </div>
+        
+        <h3>classList.contains()</h3>
+        <div class="code-block">
+if (element.classList.contains("active")) {
+    console.log("Element is active");
+}
+        </div>
+        
+        <h2>Modifying Attributes</h2>
+        
+        <h3>getAttribute()</h3>
+        <div class="code-block">
+const href = document.querySelector("a").getAttribute("href");
+        </div>
+        
+        <h3>setAttribute()</h3>
+        <div class="code-block">
+document.querySelector("img").setAttribute("src", "new-image.jpg");
+document.querySelector("a").setAttribute("href", "https://example.com");
+        </div>
+        
+        <h3>removeAttribute()</h3>
+        <div class="code-block">
+document.getElementById("form").removeAttribute("disabled");
+        </div>
+        
+        <h2>Creating and Removing Elements</h2>
+        
+        <h3>createElement()</h3>
+        <p>Create a new element:</p>
+        <div class="code-block">
+const newPara = document.createElement("p");
+newPara.textContent = "This is a new paragraph";
+newPara.classList.add("new-item");
+        </div>
+        
+        <h3>appendChild()</h3>
+        <p>Add element as last child:</p>
+        <div class="code-block">
+document.getElementById("container").appendChild(newPara);
+        </div>
+        
+        <h3>insertBefore()</h3>
+        <p>Add element before specific child:</p>
+        <div class="code-block">
+const firstChild = document.getElementById("list").firstChild;
+document.getElementById("list").insertBefore(newItem, firstChild);
+        </div>
+        
+        <h3>removeChild()</h3>
+        <p>Remove an element:</p>
+        <div class="code-block">
+const item = document.getElementById("item-to-remove");
+item.parentElement.removeChild(item);
+
+// Or simply
+item.remove();
+        </div>
+        
+        <h2>Interactive List Example</h2>
+        
+        <div class="demo-area">
+            <h3>My To-Do List</h3>
+            <input type="text" id="todoInput" placeholder="Add a new task..." style="padding: 8px; width: 200px; border: 1px solid #ddd; border-radius: 3px;">
+            <button onclick="addToDo()">Add</button>
+            <ul id="todoList" style="margin-top: 20px; list-style: none;">
+                <li style="padding: 10px; background: #f9f9f9; margin: 5px 0; border-radius: 3px;">Sample task</li>
+            </ul>
+            <button onclick="clearAllToDos()">Clear All</button>
+        </div>
+        
+        <h2>Working with Forms</h2>
+        
+        <h3>Getting Input Values</h3>
+        <div class="code-block">
+const name = document.getElementById("nameInput").value;
+const email = document.getElementById("emailInput").value;
+const isChecked = document.getElementById("agree").checked;
+        </div>
+        
+        <h3>Setting Input Values</h3>
+        <div class="code-block">
+document.getElementById("nameInput").value = "John Doe";
+document.getElementById("agree").checked = true;
+        </div>
+        
+        <h2>DOM Navigation</h2>
+        
+        <h3>Parent, Children, Siblings</h3>
+        <div class="code-block">
+const element = document.getElementById("item");
+
+element.parentElement;           // Parent node
+element.children;                // All child elements
+element.firstChild;              // First child (text/element)
+element.lastChild;               // Last child
+element.nextElementSibling;      // Next sibling
+element.previousElementSibling;  // Previous sibling
+        </div>
+        
+        <h2>Performance Tips</h2>
+        <ul>
+            <li>Cache frequently used elements: `const btn = document.getElementById('btn');`</li>
+            <li>Use querySelector/querySelectorAll for complex selectors</li>
+            <li>Avoid innerHTML for security; use textContent or createElement</li>
+            <li>Minimize DOM manipulation in loops</li>
+            <li>Use event delegation for dynamic elements</li>
+        </ul>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>DOM is a tree representation of HTML</li>
+            <li>Use querySelector/querySelectorAll to select elements</li>
+            <li>Use textContent/innerHTML to change content</li>
+            <li>Use style property to change CSS</li>
+            <li>Use classList to manage CSS classes</li>
+            <li>Use createElement/appendChild for dynamic content</li>
+        </ul>
+        
+        <script>
+            function addToDo() {
+                const input = document.getElementById('todoInput');
+                const text = input.value.trim();
+                
+                if (text === '') {
+                    alert('Please enter a task');
+                    return;
+                }
+                
+                const li = document.createElement('li');
+                li.textContent = text;
+                li.style.padding = '10px';
+                li.style.background = '#f9f9f9';
+                li.style.margin = '5px 0';
+                li.style.borderRadius = '3px';
+                li.style.display = 'flex';
+                li.style.justifyContent = 'space-between';
+                li.style.alignItems = 'center';
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.style.padding = '5px 10px';
+                deleteBtn.style.fontSize = '12px';
+                deleteBtn.onclick = function() { li.remove(); };
+                
+                li.appendChild(deleteBtn);
+                document.getElementById('todoList').appendChild(li);
+                input.value = '';
+            }
+            
+            function clearAllToDos() {
+                document.getElementById('todoList').innerHTML = '';
+            }
+        </script>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="16-js-functions.html">← Previous</a> | 
+            <a href="18-js-events.html">Next: Events & Interactivity →</a>
+        </div>
+    </div>
+</body>
+</html>

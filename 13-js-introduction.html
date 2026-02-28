@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13 - Introduction to JavaScript</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .demo-box {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+            margin: 5px;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .output {
+            background: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="12-css-flexbox.html">← Previous</a>
+            <a href="14-js-variables.html">Next →</a>
+        </nav>
+        
+        <h1>⚙️ Lesson 13: Introduction to JavaScript</h1>
+        
+        <div class="demo-box">
+            <strong>What is JavaScript?</strong> JavaScript is a programming language that runs in web browsers. It makes web pages interactive by allowing you to respond to user actions, validate forms, animate elements, and much more.
+        </div>
+        
+        <h2>History and Purpose of JavaScript</h2>
+        <p>Created in 1995 by Brendan Eich, JavaScript was designed to make web pages interactive. Originally called Mocha, then LiveScript, it was renamed JavaScript for marketing reasons. Today, it's one of the most popular programming languages.</p>
+        
+        <h2>Three Ways to Add JavaScript</h2>
+        
+        <h3>1. Inline JavaScript</h3>
+        <p>Add JavaScript directly to HTML elements:</p>
+        
+        <div class="code-block">
+&lt;button onclick="alert('Hello, World!')"&gt;Click me&lt;/button&gt;
+        </div>
+        
+        <div class="demo-box">
+            <button onclick="alert('Hello, World!')">Click me</button>
+        </div>
+        
+        <h3>2. Internal JavaScript</h3>
+        <p>Add JavaScript in the &lt;head&gt; or &lt;body&gt; using &lt;script&gt; tags:</p>
+        
+        <div class="code-block">
+&lt;head&gt;
+    &lt;script&gt;
+        console.log("This script runs when the page loads");
+    &lt;/script&gt;
+&lt;/head&gt;
+        </div>
+        
+        <h3>3. External JavaScript (BEST PRACTICE)</h3>
+        <p>Create a separate .js file and link it in your HTML:</p>
+        
+        <div class="code-block">
+&lt;!-- In your HTML --&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;
+
+// In script.js
+console.log("External JavaScript file!");
+        </div>
+        
+        <h2>JavaScript Output</h2>
+        
+        <h3>console.log()</h3>
+        <p>Print messages to the browser console (useful for debugging):</p>
+        
+        <div class="code-block">
+console.log("Hello, World!");
+console.log(42);
+console.log(true);
+        </div>
+        
+        <div class="demo-box">
+            <p>Open the Developer Console (F12 or Ctrl+Shift+I) and click the button to see the output:</p>
+            <button onclick="console.log('Hello from console!'); console.log('42'); console.log(true);">Open Console & Log Messages</button>
+        </div>
+        
+        <h3>alert()</h3>
+        <p>Display a message in a popup dialog:</p>
+        
+        <div class="code-block">
+alert("This is an alert message!");
+        </div>
+        
+        <h3>document.write()</h3>
+        <p>Write directly to the HTML document:</p>
+        
+        <div class="code-block">
+document.write("&lt;h2&gt;This is written by JavaScript&lt;/h2&gt;");
+        </div>
+        
+        <h3>Modify HTML (Most Common)</h3>
+        <p>Change the content of HTML elements:</p>
+        
+        <div class="code-block">
+document.getElementById("demo").innerText = "Hello!";
+        </div>
+        
+        <div class="demo-box">
+            <p id="js-demo">Original text</p>
+            <button onclick="document.getElementById('js-demo').innerText = 'Changed by JavaScript!'">Change Text</button>
+        </div>
+        
+        <h2>Comments</h2>
+        <p>Comments explain code and don't affect execution:</p>
+        
+        <div class="code-block">
+// Single-line comment
+
+/* Multi-line comment
+   can span multiple lines
+   for longer explanations */
+        </div>
+        
+        <h2>Basic Syntax Rules</h2>
+        <ul>
+            <li>Statements end with semicolons (;) - optional but recommended</li>
+            <li>JavaScript is case-sensitive (console, Console, and CONSOLE are different)</li>
+            <li>Whitespace is ignored (indentation is for readability)</li>
+            <li>Strings can use single or double quotes: 'hello' or "hello"</li>
+            <li>Variables should have meaningful names (camelCase is standard)</li>
+        </ul>
+        
+        <div class="code-block">
+console.log("Hello");   // Correct
+console.log('Hello');   // Also correct
+console.log("Hello")    // Works but missing semicolon
+        </div>
+        
+        <h2>Variables</h2>
+        <p>Variables store data values. Declare them with <code>var</code>, <code>let</code>, or <code>const</code>:</p>
+        
+        <div class="code-block">
+let name = "Alice";
+let age = 28;
+let isStudent = true;
+
+console.log(name);      // Output: Alice
+console.log(age);       // Output: 28
+console.log(isStudent); // Output: true
+        </div>
+        
+        <h2>Common Data Types</h2>
+        <div class="demo-box">
+            <p><strong>Number:</strong> 42, 3.14, -10</p>
+            <p><strong>String:</strong> "Hello", 'World', "123"</p>
+            <p><strong>Boolean:</strong> true, false</p>
+            <p><strong>Array:</strong> [1, 2, 3], ['Apple', 'Banana']</p>
+            <p><strong>Object:</strong> {name: "Alice", age: 28}</p>
+            <p><strong>null:</strong> Intentional no value</p>
+            <p><strong>undefined:</strong> Variable not assigned a value</p>
+        </p>
+        </p>
+        </div>
+        
+        <h2>typeof Operator</h2>
+        <p>Get the data type of a value:</p>
+        
+        <div class="code-block">
+console.log(typeof 42);           // "number"
+console.log(typeof "hello");      // "string"
+console.log(typeof true);         // "boolean"
+console.log(typeof [1, 2, 3]);    // "object"
+console.log(typeof undefined);    // "undefined"
+        </div>
+        
+        <h2>Interactive Example</h2>
+        
+        <div class="demo-box">
+            <input type="text" id="userInput" placeholder="Enter your name" style="padding: 8px; border: 1px solid #ddd; border-radius: 3px; width: 200px;">
+            <button onclick="let name = document.getElementById('userInput').value; alert('Hello, ' + name + '!');">Say Hello</button>
+        </div>
+        
+        <h2>Key Concepts</h2>
+        <ul>
+            <li>JavaScript runs in the browser and allows interactivity</li>
+            <li>JavaScript can be inline, internal, or external</li>
+            <li>Use console.log() for debugging</li>
+            <li>Variables store data values</li>
+            <li>Each data type has different characteristics</li>
+            <li>Semicolons terminate statements (recommended)</li>
+            <li>JavaScript is dynamically typed (types can change)</li>
+        </ul>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>JavaScript is a programming language for web interactivity</li>
+            <li>Add JavaScript with &lt;script&gt; tags</li>
+            <li>Use console.log() for testing and debugging</li>
+            <li>Variables store data with let, const, or var</li>
+            <li>Different data types have different behaviors</li>
+        </ul>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="12-css-flexbox.html">← Previous</a> | 
+            <a href="14-js-variables.html">Next: Variables & Data Types →</a>
+        </div>
+    </div>
+</body>
+</html>

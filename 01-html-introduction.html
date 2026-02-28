@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 - Introduction to HTML</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #667eea;
+            border-radius: 5px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 0.8; }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .explanation {
+            background: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        .demo-box {
+            background: #f9f9f9;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .lesson-nav {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← Back to Course</a>
+            <a href="02-html-structure.html">Next Lesson →</a>
+        </nav>
+        
+        <h1>📄 Lesson 1: Introduction to HTML</h1>
+        
+        <div class="explanation">
+            <strong>What is HTML?</strong> HTML stands for HyperText Markup Language. It's the standard markup language used to create web pages. HTML provides the structure and content of websites.
+        </div>
+        
+        <h2>The Purpose of HTML</h2>
+        <p>HTML serves to:</p>
+        <ul>
+            <li>Define the structure of web content</li>
+            <li>Create semantic meaning for text and media</li>
+            <li>Provide the foundation for styling with CSS</li>
+            <li>Enable functionality with JavaScript</li>
+            <li>Make content accessible to all users</li>
+        </ul>
+        
+        <h2>A Brief History</h2>
+        <p>HTML was created in 1989 by Tim Berners-Lee at CERN. The first version (HTML 1.0) was very simple, with just 20 tags. Today, HTML5 is the current standard with many more features and improved capabilities for modern web applications.</p>
+        
+        <h2>HTML Elements</h2>
+        <p>HTML uses <strong>tags</strong> to mark up content. Tags tell the browser how to display information. Most tags come in pairs: an opening tag and a closing tag.</p>
+        
+        <div class="code-block">
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;h1&gt;This is a heading.&lt;/h1&gt;
+&lt;a href="https://example.com"&gt;This is a link&lt;/a&gt;
+        </div>
+        
+        <h2>Tag Anatomy</h2>
+        <div class="demo-box">
+            <p><strong>Opening tag:</strong> &lt;tagname&gt;</p>
+            <p><strong>Content:</strong> The text or media inside the tags</p>
+            <p><strong>Closing tag:</strong> &lt;/tagname&gt;</p>
+            <p><strong>Element:</strong> Opening tag + content + closing tag</p>
+        </div>
+        
+        <h2>Self-Closing Tags</h2>
+        <p>Some tags don't need a closing tag because they don't contain content. These are called <strong>void elements</strong> or <strong>self-closing tags</strong>:</p>
+        
+        <div class="code-block">
+&lt;img src="image.jpg" alt="Description"&gt;
+&lt;br&gt;
+&lt;input type="text"&gt;
+        </div>
+        
+        <h2>Attributes</h2>
+        <p>Attributes provide additional information about elements. They go in the opening tag:</p>
+        
+        <div class="code-block">
+&lt;a href="https://google.com" target="_blank"&gt;Open Google&lt;/a&gt;
+        </div>
+        
+        <p>In this example, <code>href</code> and <code>target</code> are attributes that modify the link's behavior.</p>
+        
+        <h2>Common HTML Tags (Preview)</h2>
+        <div class="explanation">
+            <p><strong>&lt;h1&gt; to &lt;h6&gt;</strong> - Headings (h1 is most important)</p>
+            <p><strong>&lt;p&gt;</strong> - Paragraphs of text</p>
+            <p><strong>&lt;a&gt;</strong> - Links to other pages</p>
+            <p><strong>&lt;img&gt;</strong> - Images</p>
+            <p><strong>&lt;div&gt;</strong> - Container for organizing content</p>
+            <p><strong>&lt;button&gt;</strong> - Clickable buttons</p>
+        </div>
+        
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>HTML is the foundation of every website</li>
+            <li>HTML uses tags to structure and mark up content</li>
+            <li>Tags typically have opening and closing versions</li>
+            <li>Attributes provide additional information about elements</li>
+            <li>HTML5 is the current standard version</li>
+        </ul>
+        
+        <div class="lesson-nav">
+            <a href="index.html">← Back to Course</a> | 
+            <a href="02-html-structure.html">Next: HTML Structure & Syntax →</a>
+        </div>
+    </div>
+</body>
+</html>
